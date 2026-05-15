@@ -1,0 +1,23 @@
+# Astro build artifacts (legacy, not used for HTML version)
+node_modules/
+dist/
+.astro/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+
+# Personal documents (kept separately)
+*.pdf
