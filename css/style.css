@@ -469,49 +469,6 @@ main { padding-top: 72px; }
 .card-meta a { color: var(--text); border-bottom: 1px solid var(--border); }
 .card-meta a:hover { border-bottom-color: var(--accent-1); }
 
-/* ---------- Post List ---------- */
-.post-list {
-  border-top: 1px solid var(--border);
-}
-.post-item {
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  transition: background var(--transition);
-}
-.post-item:hover { background: var(--surface); }
-.post-row {
-  display: grid;
-  grid-template-columns: 140px 1fr auto;
-  gap: 32px;
-  align-items: center;
-  padding: 28px 0;
-  transition: padding var(--transition);
-}
-.post-item a.post-row:hover { padding-left: 16px; padding-right: 16px; }
-.post-date {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--text-soft);
-  letter-spacing: 0.04em;
-}
-.post-title {
-  font-size: 1.0625rem;
-  font-weight: 500;
-  color: var(--text);
-}
-.post-arrow {
-  color: var(--text-soft);
-  font-size: 1.125rem;
-}
-.post-list-full .post-excerpt {
-  color: var(--text-muted);
-  margin: -12px 0 24px 172px;
-  font-size: 0.9375rem;
-}
-.post-item.placeholder { opacity: 0.5; }
-.post-item.placeholder:hover { background: transparent; }
-.post-item.placeholder .post-row:hover { padding-left: 0; padding-right: 0; }
-
 /* ---------- Bullet list ---------- */
 .bullet-list {
   margin: 0 0 1.5em;
@@ -644,98 +601,6 @@ main { padding-top: 72px; }
 .cta-card h2 { margin: 0 0 12px; }
 .cta-card p { margin: 0 auto 28px; max-width: 480px; }
 
-/* ---------- Post Article ---------- */
-.post { padding: 64px 0 96px; }
-.post-header {
-  margin-bottom: 56px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid var(--border);
-}
-.post-header .post-date {
-  display: block;
-  margin-bottom: 24px;
-}
-.post-header h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 16px;
-}
-.post-subtitle {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-.post-body {
-  font-size: 1.0625rem;
-  line-height: 1.8;
-  color: var(--text-muted);
-}
-.post-body > * { color: var(--text-muted); }
-.post-body h2 {
-  font-size: 1.75rem;
-  margin: 2.5em 0 0.75em;
-  color: var(--text);
-}
-.post-body h3 {
-  font-size: 1.25rem;
-  margin: 2em 0 0.5em;
-  color: var(--text);
-}
-.post-body strong { color: var(--text); }
-.post-body a {
-  color: var(--text);
-  border-bottom: 1px solid var(--border-strong);
-  transition: border-color var(--transition);
-}
-.post-body a:hover { border-bottom-color: var(--accent-1); }
-.post-body ul, .post-body ol { padding-left: 1.5em; margin-bottom: 1.5em; }
-.post-body ul li, .post-body ol li {
-  margin-bottom: 0.5em;
-  position: relative;
-}
-.post-body ul { list-style: none; padding-left: 0; }
-.post-body ul li {
-  padding-left: 24px;
-}
-.post-body ul li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 14px;
-  width: 8px; height: 1px;
-  background: var(--accent-1);
-}
-.post-body blockquote {
-  border-left: 2px solid;
-  border-image: var(--gradient) 1;
-  padding: 4px 0 4px 28px;
-  margin: 2em 0;
-  color: var(--text);
-  font-size: 1.125rem;
-  font-style: italic;
-}
-.post-body code {
-  background: var(--surface);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  font-size: 0.9em;
-  font-family: var(--font-mono);
-  color: var(--accent-1);
-}
-.post-body pre {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 20px;
-  border-radius: var(--radius);
-  overflow-x: auto;
-  font-size: 0.875rem;
-}
-.post-body pre code { background: none; padding: 0; color: var(--text); }
-
-.post-nav {
-  margin-top: 64px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
-}
-
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--border);
@@ -835,12 +700,6 @@ main { padding-top: 72px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .stat { padding: 24px 16px; }
   .stat-value { font-size: 1.875rem; }
-  .post-row {
-    grid-template-columns: 1fr;
-    gap: 6px; padding: 20px 0;
-  }
-  .post-arrow { display: none; }
-  .post-list-full .post-excerpt { margin-left: 0; }
   .award-list li {
     grid-template-columns: 72px 1fr;
     gap: 16px;
