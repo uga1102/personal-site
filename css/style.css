@@ -136,10 +136,16 @@ strong { color: var(--text); font-weight: 600; }
 
 .gradient-text {
   background: var(--gradient);
+  background-size: 220% 220%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
+  animation: gradient-flow 9s ease-in-out infinite;
+}
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
 }
 
 .text-link {
@@ -171,11 +177,19 @@ strong { color: var(--text); font-weight: 600; }
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--border);
+  transition: background var(--transition), border-color var(--transition);
+}
+.site-header.is-scrolled {
+  background: rgba(10,10,12,0.88);
+  border-bottom-color: rgba(255,255,255,0.04);
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
   height: 72px;
+  transform-origin: left center;
+  transition: transform 240ms var(--ease);
 }
+.site-header.is-scrolled .header-inner { transform: scale(0.92); }
 .brand {
   font-weight: 700;
   font-size: 0.9375rem;
@@ -237,7 +251,23 @@ main { padding-top: 72px; }
   position: relative;
   padding: clamp(80px, 12vh, 140px) 0 clamp(60px, 10vh, 100px);
   overflow: hidden;
+  --mx: 50%;
+  --my: 40%;
 }
+.cursor-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle 480px at var(--mx) var(--my),
+              rgba(251,146,60,0.18) 0%,
+              rgba(236,72,153,0.10) 30%,
+              transparent 60%);
+  opacity: 0;
+  transition: opacity 400ms var(--ease);
+}
+.hero:hover .cursor-glow,
+.hero.is-hovering .cursor-glow { opacity: 1; }
 .hero::before,
 .hero::after {
   content: '';
@@ -252,10 +282,14 @@ main { padding-top: 72px; }
 .hero::before {
   top: -200px; right: -150px;
   background: radial-gradient(circle, var(--accent-1) 0%, transparent 70%);
+  transform: translate(var(--blob-x, 0px), var(--blob-y, 0px));
+  transition: transform 700ms var(--ease);
 }
 .hero::after {
   bottom: -250px; left: -200px;
   background: radial-gradient(circle, var(--accent-3) 0%, transparent 70%);
+  transform: translate(calc(var(--blob-x, 0px) * -0.6), calc(var(--blob-y, 0px) * -0.6));
+  transition: transform 700ms var(--ease);
 }
 .hero .container { position: relative; z-index: 2; }
 .hero-eyebrow { margin-bottom: 28px; }
@@ -671,6 +705,60 @@ main { padding-top: 72px; }
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ---------- Split-char reveal ---------- */
+.split-ready {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+  transition-delay: calc(var(--i, 0) * 32ms);
+}
+.split-ready.is-visible .split-char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Scroll progress bar ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 60;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ---------- Magnetic button ---------- */
+.btn-primary.is-magnetic {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              background var(--transition),
+              color var(--transition),
+              border-color var(--transition);
+}
+
+/* ---------- Page fade ---------- */
+html { background: var(--bg); }
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+main { animation: page-in 320ms var(--ease) both; }
+body.is-leaving main {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 240ms var(--ease), transform 240ms var(--ease);
+  animation: none;
 }
 
 /* ---------- Responsive ---------- */
